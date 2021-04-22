@@ -161,7 +161,7 @@ class _QuizPageState extends State<QuizPage>
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Text(
-              questions[index].getQuestion() + "?",
+              questions[index].question + "?",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 25),
             ),
@@ -175,7 +175,7 @@ class _QuizPageState extends State<QuizPage>
             ),
           ),
           CachedNetworkImage(
-            imageUrl: questions[index].getImageUrl(),
+            imageUrl: questions[index].imageUrl,
           ),
           SizedBox(
             height: 50,
@@ -194,7 +194,7 @@ class _QuizPageState extends State<QuizPage>
                       MaterialStateProperty.all<Color>(Colors.green),
                 ),
                 onPressed: () {
-                  if (questions[index].getAnswer() == "True") {
+                  if (questions[index].answer == "True") {
                     setState(() {
                       points = points + 20;
                       nextQuestion();
@@ -228,7 +228,7 @@ class _QuizPageState extends State<QuizPage>
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                 ),
                 onPressed: () {
-                  if (questions[index].getAnswer() == "False") {
+                  if (questions[index].answer == "False") {
                     setState(() {
                       points = points + 20;
                       nextQuestion();
@@ -261,7 +261,6 @@ class _QuizPageState extends State<QuizPage>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     controller.dispose();
     super.dispose();
   }
